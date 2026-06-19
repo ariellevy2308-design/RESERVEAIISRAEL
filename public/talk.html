@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>דבר עם המארח החכם</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,Segoe UI,Roboto,sans-serif;}
+  body{background:#0d0f1a;color:#e8eaf0;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:24px;}
+  .wrap{width:100%;max-width:620px;display:flex;flex-direction:column;gap:16px;}
+  header{text-align:center;margin-bottom:4px;}
+  header h1{font-size:1.4rem;font-weight:800;}
+  header .biz{color:#7c9cff;font-weight:700;margin-top:4px;}
+  select{background:#1a1d2a;color:#e8eaf0;border:1px solid #2a2e40;border-radius:10px;padding:10px 12px;font-size:.95rem;width:100%;}
+  #log{background:#151827;border:1px solid #232740;border-radius:16px;padding:16px;height:46vh;overflow-y:auto;display:flex;flex-direction:column;gap:10px;}
+  .msg{padding:10px 14px;border-radius:14px;max-width:85%;line-height:1.4;font-size:.95rem;white-space:pre-wrap;}
+  .me{align-self:flex-start;background:#2d6cff;color:#fff;border-bottom-left-radius:4px;}
+  .ai{align-self:flex-end;background:#222640;border-bottom-right-radius:4px;}
+  .sys{align-self:center;color:#8890a8;font-size:.8rem;font-style:italic;}
+  .controls{display:flex;gap:10px;}
+  input[type=text]{flex:1;background:#1a1d2a;color:#e8eaf0;border:1px solid #2a2e40;border-radius:12px;padding:14px;font-size:1rem;}
+  button{border:0;border-radius:12px;font-weight:700;cursor:pointer;font-size:1rem;}
+  #send{background:#2d6cff;color:#fff;padding:0 20px;}
+  #mic{width:64px;height:64px;border-radius:50%;background:#2d6cff;color:#fff;font-size:1.6rem;align-self:center;transition:transform .1s,background .2s;}
+  #mic.listening{background:#ff3b5c;animation:pulse 1.2s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,59,92,.5);}70%{box-shadow:0 0 0 18px rgba(255,59,92,0);}100%{box-shadow:0 0 0 0 rgba(255,59,92,0);}}
+  .hint{text-align:center;color:#8890a8;font-size:.82rem;}
+  .row{display:flex;align-items:center;justify-content:center;gap:14px;}
+  .toggle{display:flex;align-items:center;gap:6px;color:#8890a8;font-size:.82rem;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>📞 דבר עם המארח החכם</h1>
+    <div class="biz" id="bizName">טוען…</div>
+  </header>
+
+  <select id="bizSelect"></select>
+
+  <div id="log"></div>
+
+  <div class="row">
+    <button id="mic" title="נהל שיחה בקול">🎙️</button>
+  </div>
+  <div class="hint" id="hint">לחץ על המיקרופון ודבר — או הקלד למטה. המארח יענה בקול.</div>
+
+  <div class="controls">
+    <input type="text" id="text" placeholder="הקלד הודעה…" autocomplete="off"/>
+    <button id="send">שלח</button>
+  </div>
+  <label class="toggle"><input type="checkbox" id="speakToggle" checked/> הקרא תשובות בקול</label>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const log = $('#log');
+let businesses = [], businessId = null, messages = [], busy = false;
+
+function add(role, text){
+  const d = document.createElement('div');
+  d.className = 'msg ' + (role === 'me' ? 'me' : role === 'ai' ? 'ai' : 'sys');
+  d.textContent = text;
+  log.appendChild(d);
+  log.scrollTop = log.scrollHeight;
+}
+
+// ---- המרת טקסט לדיבור (הדפדפן מקריא את תשובת Claude) ----
+function speak(text){
+  if (!$('#speakToggle').checked || !window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'he-IL'; u.rate = 1.0; u.pitch = 1.0;
+  speechSynthesis.speak(u);
+}
+
+// ---- טעינת העסקים (לאיזו מסעדה לדבר) ----
+async function loadBusinesses(){
+  const r = await fetch('/api/voice/businesses');
+  const data = await r.json();
+  businesses = data.businesses || [];
+  const sel = $('#bizSelect');
+  sel.innerHTML = businesses.map(b => `<option value="${b.id}">${b.name} — ${b.twilio_number}</option>`).join('');
+  if (businesses.length){ selectBusiness(businesses[0].id); }
+  else { $('#bizName').textContent = 'לא הוגדרו עסקים'; }
+  sel.onchange = () => selectBusiness(sel.value);
+}
+
+function selectBusiness(id){
+  businessId = id;
+  const b = businesses.find(x => x.id === id);
+  $('#bizName').textContent = b ? b.name : '';
+  messages = [];
+  log.innerHTML = '';
+  const greeting = `תודה שהתקשרת ל${b.name}. אני המארח החכם — איך אפשר לעזור?`;
+  add('ai', greeting);
+  messages.push({ role: 'assistant', content: greeting });
+  speak(greeting);
+}
+
+// ---- שליחת הודעה ל‑Claude ----
+async function send(text){
+  text = (text || '').trim();
+  if (!text || busy) return;
+  busy = true;
+  add('me', text);
+  messages.push({ role: 'user', content: text });
+  $('#text').value = '';
+  add('sys', '…חושב');
+  const thinking = log.lastChild;
+
+  try {
+    const r = await fetch('/api/voice/web-chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ businessId, messages })
+    });
+    const data = await r.json();
+    thinking.remove();
+    if (!r.ok){ add('sys', '⚠️ ' + (data.error || 'שגיאה')); busy = false; return; }
+    add('ai', data.reply);
+    messages.push({ role: 'assistant', content: data.reply });
+    speak(data.reply);
+  } catch(e){
+    thinking.remove();
+    add('sys', '⚠️ ' + e.message);
+  }
+  busy = false;
+}
+
+$('#send').onclick = () => send($('#text').value);
+$('#text').addEventListener('keydown', e => { if (e.key === 'Enter') send($('#text').value); });
+
+// ---- זיהוי דיבור (מיקרופון → טקסט), בעברית ----
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+const mic = $('#mic');
+if (SR){
+  const rec = new SR();
+  rec.lang = 'he-IL';
+  rec.interimResults = false;
+  let listening = false;
+  mic.onclick = () => { listening ? rec.stop() : rec.start(); };
+  rec.onstart = () => { listening = true; mic.classList.add('listening'); $('#hint').textContent = 'מקשיב… דבר עכשיו'; };
+  rec.onend   = () => { listening = false; mic.classList.remove('listening'); $('#hint').textContent = 'לחץ על המיקרופון ודבר — או הקלד למטה.'; };
+  rec.onerror = e => { $('#hint').textContent = 'שגיאת מיקרופון: ' + e.error; };
+  rec.onresult = e => { send(e.results[0][0].transcript); };
+} else {
+  mic.style.display = 'none';
+  $('#hint').textContent = 'קלט קולי דורש Chrome או Edge. אפשר עדיין להקליד למטה — התשובות יוקראו בקול.';
+}
+
+loadBusinesses();
+</script>
+</body>
+</html>

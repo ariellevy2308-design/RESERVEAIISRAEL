@@ -1,0 +1,8 @@
+node_modules/
+.env
+cloudflared.exe
+*.log
+npm-debug.log*
+.DS_Store
+
+data/config.json

@@ -1,0 +1,163 @@
+[
+  {
+    "id": "d6f524aa-9a86-4d27-a459-87219b254920",
+    "business_id": "df8e7297-5fe2-4ed9-8dc2-928e4801ed2f",
+    "caller_number": "+14155551234",
+    "transcript": [
+      {
+        "role": "caller",
+        "text": "What are your hours on Friday?"
+      },
+      {
+        "role": "caller",
+        "text": "goodbye"
+      }
+    ],
+    "created_at": "2026-06-13T11:26:34.441Z"
+  },
+  {
+    "id": "578ec432-ce10-4851-aa6b-8e1591c93945",
+    "business_id": "df8e7297-5fe2-4ed9-8dc2-928e4801ed2f",
+    "caller_number": "+14155551234",
+    "transcript": [
+      {
+        "role": "caller",
+        "text": "Hi, what time do you close on Friday and do you have vegan options?"
+      },
+      {
+        "role": "assistant",
+        "text": "Hi there, thanks for calling The Reserve! On Fridays we're open until midnight, and yes, we do have vegan options — our wild mushroom risotto can be made fully vegan, and several of our other dishes can be accommodated as well. Can I help you with anything else or would you like to make a reservation?"
+      },
+      {
+        "role": "caller",
+        "text": "Great, can I book a table for 4 this Friday at 8pm under the name David?"
+      },
+      {
+        "role": "assistant",
+        "text": "Perfect! Just to confirm — I have a reservation for David, party of 4, this Friday at 8pm. Does that all sound correct?"
+      },
+      {
+        "role": "caller",
+        "text": "goodbye"
+      }
+    ],
+    "created_at": "2026-06-13T12:02:17.341Z"
+  },
+  {
+    "id": "aa32eb4d-3948-453d-b157-5e440efd5443",
+    "business_id": "df8e7297-5fe2-4ed9-8dc2-928e4801ed2f",
+    "caller_number": "+14155550123",
+    "transcript": [
+      {
+        "role": "caller",
+        "text": "do you have a table for two tomorrow at 7pm"
+      },
+      {
+        "role": "assistant",
+        "text": "Absolutely, we'd love to have you! Can I get your name to put on the reservation?"
+      }
+    ],
+    "created_at": "2026-06-13T14:19:15.696Z"
+  },
+  {
+    "id": "d243e52b-0a74-4d26-9e00-30985cb5698e",
+    "business_id": "df8e7297-5fe2-4ed9-8dc2-928e4801ed2f",
+    "caller_number": "+972555648787",
+    "transcript": [
+      {
+        "role": "caller",
+        "text": "Hello."
+      },
+      {
+        "role": "assistant",
+        "text": "Hello, thank you for calling The Reserve! How can I help you today?"
+      },
+      {
+        "role": "caller",
+        "text": "Bye, bye."
+      }
+    ],
+    "created_at": "2026-06-13T14:22:53.430Z"
+  },
+  {
+    "id": "47871b76-1105-4668-b48b-fe886ca0500d",
+    "business_id": "demo-business",
+    "caller_number": "+14155550123",
+    "transcript": [
+      {
+        "role": "caller",
+        "text": "I'd like a table for two on December 20th at 8pm, name is Sarah"
+      },
+      {
+        "role": "assistant",
+        "text": "Hello! I have you down for 2 guests on December 20th at 8pm under the name Sarah — does that all look correct?"
+      }
+    ],
+    "created_at": "2026-06-13T14:32:47.457Z"
+  },
+  {
+    "id": "9169129b-8c0a-4928-828a-703502c39076",
+    "business_id": "demo-business",
+    "caller_number": "+14155550123",
+    "transcript": [],
+    "created_at": "2026-06-13T14:40:58.861Z"
+  },
+  {
+    "id": "9745d205-4001-432b-b6bc-321f709b133d",
+    "business_id": "demo-business",
+    "caller_number": "+14155550123",
+    "transcript": [],
+    "created_at": "2026-06-13T14:41:21.967Z"
+  },
+  {
+    "id": "d026d1b1-849d-4892-a84f-c6763f5cffcc",
+    "business_id": "demo-business",
+    "caller_number": "+14155550123",
+    "transcript": [],
+    "created_at": "2026-06-13T17:30:21.865Z"
+  },
+  {
+    "id": "b638f405-d0f4-4208-884b-b025084bf82a",
+    "business_id": "demo-business",
+    "caller_number": "+14155550123",
+    "transcript": [],
+    "created_at": "2026-06-13T17:41:42.076Z"
+  },
+  {
+    "id": "88285bc3-2082-4c3b-b362-6d745c792fdf",
+    "business_id": "demo-business",
+    "caller_number": "+14155550123",
+    "transcript": [],
+    "created_at": "2026-06-13T17:45:36.880Z"
+  },
+  {
+    "id": "f5bc99e1-6ee4-42ed-b85c-6430dff6c869",
+    "business_id": "demo-business",
+    "caller_number": "+14155550123",
+    "transcript": [],
+    "created_at": "2026-06-13T18:38:31.684Z"
+  },
+  {
+    "id": "92f6c6d3-ed83-4b88-a640-68886f87b115",
+    "business_id": "demo-business",
+    "caller_number": "unknown",
+    "transcript": [],
+    "created_at": "2026-06-13T18:39:02.296Z"
+  },
+  {
+    "id": "3a872862-25fc-4c00-b07d-545cfc744f9b",
+    "business_id": "demo-business",
+    "caller_number": "unknown",
+    "transcript": [
+      {
+        "role": "caller",
+        "text": "what are your hours on friday"
+      },
+      {
+        "role": "assistant",
+        "text": "Hello! We're open Friday from 5 PM to 11 PM for dinner service. Would you like to make a reservation?"
+      }
+    ],
+    "created_at": "2026-06-13T18:39:02.597Z"
+  }
+]

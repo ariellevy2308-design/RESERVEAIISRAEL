@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --bg:#0d0f1a;--surface:#151827;--border:#252840;
+      --text:#f1f5f9;--muted:#6b7280;--gold:#f5c842;
+      --green:#22c55e;--r:14px;
+    }
+    body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;padding-bottom:40px;}
+
+    /* Header */
+    .header{
+      background:linear-gradient(160deg,#151827,#1a1d2a);
+      border-bottom:1px solid var(--border);
+      padding:28px 20px 24px;
+      text-align:center;
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(10px);
+    }
+    .biz-icon{font-size:2.2rem;margin-bottom:8px;}
+    .biz-name{font-size:1.3rem;font-weight:800;color:var(--text);}
+    .biz-sub{font-size:.78rem;color:var(--muted);margin-top:3px;}
+    .powered{font-size:.65rem;color:var(--border);margin-top:10px;letter-spacing:.5px;}
+    .powered span{color:var(--gold);}
+
+    /* Category tabs */
+    .cat-tabs{
+      display:flex;gap:8px;overflow-x:auto;padding:16px 16px 0;
+      scrollbar-width:none;
+      position:sticky;top:119px;z-index:9;
+      background:var(--bg);
+      border-bottom:1px solid var(--border);
+      padding-bottom:0;
+    }
+    .cat-tabs::-webkit-scrollbar{display:none;}
+    .cat-tab{
+      flex-shrink:0;padding:8px 16px;border-radius:8px 8px 0 0;
+      font-size:.8rem;font-weight:600;cursor:pointer;
+      color:var(--muted);border:1px solid transparent;
+      border-bottom:none;transition:all .15s;background:transparent;
+    }
+    .cat-tab.active{color:var(--gold);background:var(--surface);border-color:var(--border);}
+
+    /* Items */
+    .section{padding:20px 16px 0;}
+    .cat-title{font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+    .cat-title::after{content:'';flex:1;height:1px;background:var(--border);}
+    .items{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+    .item{
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:var(--r);padding:14px 16px;
+      display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
+      transition:border-color .15s;
+    }
+    .item:active{border-color:var(--gold);}
+    .item-left{flex:1;}
+    .item-name{font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+    .item-desc{font-size:.76rem;color:var(--muted);line-height:1.55;}
+    .item-price{
+      font-size:1rem;font-weight:800;color:var(--gold);
+      white-space:nowrap;flex-shrink:0;padding-top:2px;
+    }
+
+    /* Empty */
+    .empty{text-align:center;padding:60px 20px;color:var(--muted);}
+    .empty-icon{font-size:3rem;margin-bottom:12px;}
+
+    /* Footer */
+    .footer{text-align:center;padding:24px 16px 8px;font-size:.72rem;color:var(--border);}
+    .footer span{color:var(--gold);}
+  </style>
+</head>
+<body>
+
+<div class="header" id="header">
+  <div class="biz-icon" id="biz-icon">🍽️</div>
+  <div class="biz-name" id="biz-name">Loading…</div>
+  <div class="biz-sub" id="biz-sub">Digital Menu</div>
+  <div class="powered">Powered by <span>ReserveAI</span></div>
+</div>
+
+<div class="cat-tabs" id="cat-tabs"></div>
+
+<div id="menu-body"></div>
+
+<div class="footer">Scan again anytime · <span>ReserveAI</span></div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const bizId  = params.get('biz') || '';
+const table  = params.get('table');
+
+const EMOJI = { restaurant:'🍽️', hotel:'🏨', warehouse:'📦' };
+
+async function load() {
+  if (!bizId) { document.getElementById('biz-name').textContent = 'Menu not found'; return; }
+
+  const res  = await fetch(`/api/menu-public/${bizId}`).catch(() => null);
+  if (!res || !res.ok) { document.getElementById('biz-name').textContent = 'Menu unavailable'; return; }
+  const data = await res.json();
+
+  const icon = EMOJI[data.businessType] || '🍽️';
+  document.getElementById('biz-icon').textContent = icon;
+  document.getElementById('biz-name').textContent = data.businessName;
+  document.getElementById('biz-sub').textContent  = table ? `Table ${table} · Digital Menu` : 'Digital Menu';
+  document.title = `${data.businessName} — Menu`;
+
+  // Free ad banner
+  if (data.freeAd?.active && data.freeAd?.text) {
+    const banner = document.createElement('div');
+    banner.style.cssText = 'background:rgba(245,200,66,.12);border:1px solid rgba(245,200,66,.3);border-radius:12px;padding:12px 16px;margin:14px 16px 0;font-size:.84rem;color:var(--gold);font-weight:600;line-height:1.5;';
+    banner.textContent = data.freeAd.text;
+    document.getElementById('cat-tabs').before(banner);
+  }
+
+  const cats = data.menu?.categories || [];
+  if (!cats.length) {
+    document.getElementById('menu-body').innerHTML = `<div class="empty"><div class="empty-icon">📋</div><p>Menu coming soon</p></div>`;
+    return;
+  }
+
+  // Tabs
+  const tabs = document.getElementById('cat-tabs');
+  tabs.innerHTML = cats.map((c,i) => `
+    <div class="cat-tab${i===0?' active':''}" onclick="scrollTo('sec-${c.id}',this)">${c.emoji||''} ${c.name}</div>
+  `).join('');
+
+  // Items
+  document.getElementById('menu-body').innerHTML = cats.map(c => `
+    <div class="section" id="sec-${c.id}">
+      <div class="cat-title">${c.emoji||''} ${c.name}</div>
+      <div class="items">
+        ${c.items.map(item => `
+          <div class="item">
+            <div class="item-left">
+              <div class="item-name">${item.name}</div>
+              ${item.desc ? `<div class="item-desc">${item.desc}</div>` : ''}
+            </div>
+            <div class="item-price">$${item.price}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function scrollTo(id, tabEl) {
+  document.getElementById(id)?.scrollIntoView({ behavior:'smooth', block:'start' });
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  tabEl.classList.add('active');
+}
+
+load();
+</script>
+</body>
+</html>

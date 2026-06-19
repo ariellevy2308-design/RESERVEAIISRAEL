@@ -1,0 +1,7 @@
+{
+  "stripeSecretKey": "",
+  "stripePublishableKey": "",
+  "twilioAccountSid": "",
+  "twilioAuthToken": "",
+  "twilioFromNumber": ""
+}

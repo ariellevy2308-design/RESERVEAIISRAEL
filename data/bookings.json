@@ -1,0 +1,598 @@
+[
+  {
+    "id": "demo-001",
+    "businessId": "demo-business",
+    "name": "Mike Torres",
+    "phone": "323-444-1122",
+    "date": "2026-05-17",
+    "time": "20:00",
+    "guests": 3,
+    "table": 5,
+    "notes": "Indoor seating, one vegetarian",
+    "status": "confirmed",
+    "source": "phone",
+    "orders": [
+      {
+        "itemId": "s1",
+        "qty": 2
+      },
+      {
+        "itemId": "m1",
+        "qty": 1
+      },
+      {
+        "itemId": "m3",
+        "qty": 2
+      },
+      {
+        "itemId": "dr1",
+        "qty": 3
+      },
+      {
+        "itemId": "d1",
+        "qty": 2
+      }
+    ],
+    "createdAt": "2026-05-16T18:32:00Z",
+    "transcript": [
+      {
+        "role": "bot",
+        "text": "Hello! Thank you for calling. I'm the automated reservation system. How can I help you?",
+        "time": "00:00"
+      },
+      {
+        "role": "customer",
+        "text": "Hi, I'd like to book a table for Saturday evening.",
+        "time": "00:06"
+      },
+      {
+        "role": "bot",
+        "text": "Sure! How many guests?",
+        "time": "00:10"
+      },
+      {
+        "role": "customer",
+        "text": "Three people.",
+        "time": "00:14"
+      },
+      {
+        "role": "bot",
+        "text": "Great. What time on Saturday?",
+        "time": "00:17"
+      },
+      {
+        "role": "customer",
+        "text": "Around 8 PM — does that work?",
+        "time": "00:22"
+      },
+      {
+        "role": "bot",
+        "text": "Yes, 8 PM Saturday is available. What name for the reservation?",
+        "time": "00:27"
+      },
+      {
+        "role": "customer",
+        "text": "Mike Torres.",
+        "time": "00:31"
+      },
+      {
+        "role": "bot",
+        "text": "Any special requests?",
+        "time": "00:35"
+      },
+      {
+        "role": "customer",
+        "text": "Yes, one of us is vegetarian, and we'd prefer indoor seating if possible.",
+        "time": "00:42"
+      },
+      {
+        "role": "bot",
+        "text": "Got it. What's a good callback number?",
+        "time": "00:50"
+      },
+      {
+        "role": "customer",
+        "text": "323-444-1122.",
+        "time": "00:55"
+      },
+      {
+        "role": "bot",
+        "text": "Reservation confirmed! We look forward to seeing you Saturday.",
+        "time": "01:13"
+      }
+    ]
+  },
+  {
+    "id": "demo-002",
+    "businessId": "demo-business",
+    "name": "Rachel Lewis",
+    "phone": "347-777-0001",
+    "date": "2026-05-16",
+    "time": "19:00",
+    "guests": 2,
+    "table": 1,
+    "notes": "",
+    "status": "confirmed",
+    "source": "phone",
+    "orders": [
+      {
+        "itemId": "s2",
+        "qty": 1
+      },
+      {
+        "itemId": "m2",
+        "qty": 2
+      },
+      {
+        "itemId": "dr2",
+        "qty": 2
+      },
+      {
+        "itemId": "d2",
+        "qty": 2
+      }
+    ],
+    "createdAt": "2026-05-15T09:10:00Z",
+    "transcript": [
+      {
+        "role": "bot",
+        "text": "Hello! Thanks for calling. How can I help?",
+        "time": "00:00"
+      },
+      {
+        "role": "customer",
+        "text": "I'd like a table for two tonight.",
+        "time": "00:05"
+      },
+      {
+        "role": "bot",
+        "text": "Of course! What time?",
+        "time": "00:09"
+      },
+      {
+        "role": "customer",
+        "text": "Seven o'clock.",
+        "time": "00:13"
+      },
+      {
+        "role": "bot",
+        "text": "Perfect, that's available. Name for the reservation?",
+        "time": "00:16"
+      },
+      {
+        "role": "customer",
+        "text": "Rachel Lewis.",
+        "time": "00:19"
+      },
+      {
+        "role": "bot",
+        "text": "All set! We'll see you at 7:00 PM.",
+        "time": "00:24"
+      }
+    ]
+  },
+  {
+    "id": "demo-003",
+    "businessId": "demo-business",
+    "name": "Joe Kane",
+    "phone": "503-333-2222",
+    "date": "2026-05-16",
+    "time": "20:30",
+    "guests": 4,
+    "table": 3,
+    "notes": "Anniversary dinner",
+    "status": "confirmed",
+    "source": "manual",
+    "orders": [
+      {
+        "itemId": "s5",
+        "qty": 1
+      },
+      {
+        "itemId": "m1",
+        "qty": 2
+      },
+      {
+        "itemId": "m4",
+        "qty": 2
+      },
+      {
+        "itemId": "dr1",
+        "qty": 4
+      },
+      {
+        "itemId": "d1",
+        "qty": 2
+      },
+      {
+        "itemId": "d3",
+        "qty": 2
+      }
+    ],
+    "createdAt": "2026-05-16T10:00:00Z",
+    "transcript": []
+  },
+  {
+    "id": "demo-004",
+    "businessId": "demo-business",
+    "name": "Sara Gordon",
+    "phone": "518-123-4000",
+    "date": "2026-05-15",
+    "time": "13:00",
+    "guests": 3,
+    "table": 2,
+    "notes": "",
+    "status": "confirmed",
+    "source": "phone",
+    "orders": [
+      {
+        "itemId": "s1",
+        "qty": 1
+      },
+      {
+        "itemId": "m6",
+        "qty": 2
+      },
+      {
+        "itemId": "m3",
+        "qty": 1
+      },
+      {
+        "itemId": "dr5",
+        "qty": 3
+      }
+    ],
+    "createdAt": "2026-05-14T16:00:00Z",
+    "transcript": [
+      {
+        "role": "bot",
+        "text": "Hello! How can I help you?",
+        "time": "00:00"
+      },
+      {
+        "role": "customer",
+        "text": "I'd like to reserve a table for three for lunch tomorrow.",
+        "time": "00:06"
+      },
+      {
+        "role": "bot",
+        "text": "Great! What time?",
+        "time": "00:09"
+      },
+      {
+        "role": "customer",
+        "text": "1 PM please.",
+        "time": "00:12"
+      },
+      {
+        "role": "bot",
+        "text": "Available. Name for the reservation?",
+        "time": "00:15"
+      },
+      {
+        "role": "customer",
+        "text": "Sara Gordon.",
+        "time": "00:18"
+      },
+      {
+        "role": "bot",
+        "text": "Confirmed! Table for three tomorrow at 1:00 PM.",
+        "time": "00:23"
+      }
+    ]
+  },
+  {
+    "id": "demo-005",
+    "businessId": "demo-business",
+    "name": "David Eastman",
+    "phone": "929-999-8887",
+    "date": "2026-05-15",
+    "time": "20:00",
+    "guests": 5,
+    "table": 6,
+    "notes": "Peanut allergy",
+    "status": "confirmed",
+    "source": "phone",
+    "orders": [
+      {
+        "itemId": "m5",
+        "qty": 3
+      },
+      {
+        "itemId": "m7",
+        "qty": 2
+      },
+      {
+        "itemId": "s3",
+        "qty": 2
+      },
+      {
+        "itemId": "dr3",
+        "qty": 5
+      },
+      {
+        "itemId": "d4",
+        "qty": 2
+      }
+    ],
+    "createdAt": "2026-05-14T19:00:00Z",
+    "transcript": []
+  },
+  {
+    "id": "demo-006",
+    "businessId": "demo-business",
+    "name": "Michelle Park",
+    "phone": "347-444-5566",
+    "date": "2026-05-14",
+    "time": "19:30",
+    "guests": 2,
+    "table": 7,
+    "notes": "",
+    "status": "confirmed",
+    "source": "manual",
+    "orders": [
+      {
+        "itemId": "s4",
+        "qty": 2
+      },
+      {
+        "itemId": "m2",
+        "qty": 2
+      },
+      {
+        "itemId": "dr2",
+        "qty": 2
+      },
+      {
+        "itemId": "d2",
+        "qty": 2
+      }
+    ],
+    "createdAt": "2026-05-13T12:00:00Z",
+    "transcript": []
+  },
+  {
+    "id": "demo-007",
+    "businessId": "demo-business",
+    "name": "Adam Davis",
+    "phone": "503-777-1234",
+    "date": "2026-05-14",
+    "time": "21:00",
+    "guests": 6,
+    "table": 10,
+    "notes": "Lively table, no issue",
+    "status": "confirmed",
+    "source": "phone",
+    "orders": [
+      {
+        "itemId": "m1",
+        "qty": 4
+      },
+      {
+        "itemId": "m8",
+        "qty": 2
+      },
+      {
+        "itemId": "s1",
+        "qty": 3
+      },
+      {
+        "itemId": "dr1",
+        "qty": 6
+      },
+      {
+        "itemId": "d1",
+        "qty": 4
+      }
+    ],
+    "createdAt": "2026-05-13T14:00:00Z",
+    "transcript": [
+      {
+        "role": "bot",
+        "text": "Hello! Thanks for calling.",
+        "time": "00:00"
+      },
+      {
+        "role": "customer",
+        "text": "Hey, there are six of us and we'd like to dine together the day after tomorrow evening.",
+        "time": "00:05"
+      },
+      {
+        "role": "bot",
+        "text": "Sounds great! What time works for you?",
+        "time": "00:10"
+      },
+      {
+        "role": "customer",
+        "text": "Around 9 PM — is late okay?",
+        "time": "00:14"
+      },
+      {
+        "role": "bot",
+        "text": "Yes, 9 PM is available. Name for the reservation?",
+        "time": "00:17"
+      },
+      {
+        "role": "customer",
+        "text": "Adam Davis.",
+        "time": "00:20"
+      },
+      {
+        "role": "bot",
+        "text": "Perfect! Table for six at 9:00 PM. Enjoy!",
+        "time": "00:26"
+      }
+    ]
+  },
+  {
+    "id": "demo-008",
+    "businessId": "demo-business",
+    "name": "Noah Sherman",
+    "phone": "586-666-0099",
+    "date": "2026-05-13",
+    "time": "20:00",
+    "guests": 4,
+    "table": 4,
+    "notes": "",
+    "status": "confirmed",
+    "source": "manual",
+    "orders": [
+      {
+        "itemId": "m3",
+        "qty": 2
+      },
+      {
+        "itemId": "m6",
+        "qty": 2
+      },
+      {
+        "itemId": "s2",
+        "qty": 2
+      },
+      {
+        "itemId": "dr4",
+        "qty": 4
+      },
+      {
+        "itemId": "d3",
+        "qty": 2
+      }
+    ],
+    "createdAt": "2026-05-12T11:00:00Z",
+    "transcript": []
+  },
+  {
+    "id": "demo-010",
+    "businessId": "demo-business",
+    "name": "Gil Anderson",
+    "phone": "347-333-5577",
+    "date": "2026-05-12",
+    "time": "20:30",
+    "guests": 3,
+    "table": 8,
+    "notes": "",
+    "status": "confirmed",
+    "source": "phone",
+    "orders": [
+      {
+        "itemId": "m4",
+        "qty": 2
+      },
+      {
+        "itemId": "m7",
+        "qty": 1
+      },
+      {
+        "itemId": "s1",
+        "qty": 1
+      },
+      {
+        "itemId": "dr1",
+        "qty": 3
+      },
+      {
+        "itemId": "d4",
+        "qty": 1
+      }
+    ],
+    "createdAt": "2026-05-11T20:00:00Z",
+    "transcript": []
+  },
+  {
+    "id": "demo-011",
+    "businessId": "demo-business",
+    "name": "Orla Quinn",
+    "phone": "508-888-9990",
+    "date": "2026-05-12",
+    "time": "19:00",
+    "guests": 2,
+    "table": 1,
+    "notes": "Birthday — surprise cake",
+    "status": "arrived",
+    "source": "phone",
+    "orders": [
+      {
+        "itemId": "s3",
+        "qty": 2
+      },
+      {
+        "itemId": "m2",
+        "qty": 2
+      },
+      {
+        "itemId": "dr2",
+        "qty": 2
+      },
+      {
+        "itemId": "d1",
+        "qty": 2
+      }
+    ],
+    "createdAt": "2026-05-11T15:00:00Z",
+    "transcript": [
+      {
+        "role": "bot",
+        "text": "Hello! How can I help you today?",
+        "time": "00:00"
+      },
+      {
+        "role": "customer",
+        "text": "I'd like to book a table for two for the day after tomorrow evening — it's my friend's birthday.",
+        "time": "00:06"
+      },
+      {
+        "role": "bot",
+        "text": "How wonderful! What time?",
+        "time": "00:12"
+      },
+      {
+        "role": "customer",
+        "text": "7 PM please.",
+        "time": "00:16"
+      },
+      {
+        "role": "bot",
+        "text": "Perfect. Any special requests?",
+        "time": "00:20"
+      },
+      {
+        "role": "customer",
+        "text": "Could you prepare a birthday cake as a surprise?",
+        "time": "00:25"
+      },
+      {
+        "role": "bot",
+        "text": "Absolutely! I've noted that. Name for the reservation?",
+        "time": "00:30"
+      },
+      {
+        "role": "customer",
+        "text": "Orla Quinn.",
+        "time": "00:33"
+      },
+      {
+        "role": "bot",
+        "text": "Reservation confirmed! We'll make it a special evening!",
+        "time": "00:38"
+      }
+    ],
+    "noShowChecked": true,
+    "arrivedAt": "2026-06-04T16:23:10.823Z"
+  },
+  {
+    "id": "demo-012",
+    "businessId": "demo-business",
+    "name": "Nick Shaw",
+    "phone": "520-000-1111",
+    "date": "2026-05-18",
+    "time": "20:00",
+    "guests": 4,
+    "table": 9,
+    "notes": "",
+    "status": "confirmed",
+    "source": "manual",
+    "orders": [],
+    "createdAt": "2026-05-16T09:00:00Z",
+    "transcript": []
+  }
+]

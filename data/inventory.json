@@ -1,0 +1,102 @@
+[
+  {
+    "id": "inv-001",
+    "businessId": "demo-business",
+    "name": "Coffee Beans",
+    "category": "Beverages",
+    "quantity": 8,
+    "minQuantity": 5,
+    "unit": "kg",
+    "createdAt": "2026-05-01T08:00:00Z"
+  },
+  {
+    "id": "inv-002",
+    "businessId": "demo-business",
+    "name": "Milk",
+    "category": "Dairy",
+    "quantity": 12,
+    "minQuantity": 10,
+    "unit": "liter",
+    "createdAt": "2026-05-01T08:00:00Z"
+  },
+  {
+    "id": "inv-003",
+    "businessId": "demo-business",
+    "name": "Eggs",
+    "category": "Food",
+    "quantity": 61,
+    "minQuantity": 30,
+    "unit": "unit",
+    "createdAt": "2026-05-01T08:00:00Z"
+  },
+  {
+    "id": "inv-004",
+    "businessId": "demo-business",
+    "name": "Olive Oil",
+    "category": "Food",
+    "quantity": 5,
+    "minQuantity": 3,
+    "unit": "liter",
+    "createdAt": "2026-05-01T08:00:00Z"
+  },
+  {
+    "id": "inv-005",
+    "businessId": "demo-business",
+    "name": "Bread",
+    "category": "Bakery",
+    "quantity": 5,
+    "minQuantity": 5,
+    "unit": "loaf",
+    "createdAt": "2026-05-01T08:00:00Z"
+  },
+  {
+    "id": "inv-006",
+    "businessId": "demo-business",
+    "name": "Yellow Cheese",
+    "category": "Dairy",
+    "quantity": 11,
+    "minQuantity": 2,
+    "unit": "kg",
+    "createdAt": "2026-05-01T08:00:00Z"
+  },
+  {
+    "id": "inv-007",
+    "businessId": "demo-business",
+    "name": "Toilet Paper",
+    "category": "Cleaning",
+    "quantity": 24,
+    "minQuantity": 12,
+    "unit": "roll",
+    "createdAt": "2026-05-01T08:00:00Z"
+  },
+  {
+    "id": "inv-008",
+    "businessId": "demo-business",
+    "name": "Hand Soap",
+    "category": "Cleaning",
+    "quantity": 5,
+    "minQuantity": 4,
+    "unit": "bottle",
+    "createdAt": "2026-05-01T08:00:00Z"
+  },
+  {
+    "id": "inv-009",
+    "businessId": "demo-business",
+    "name": "Cleaning Fluid",
+    "category": "Cleaning",
+    "quantity": 5,
+    "minQuantity": 2,
+    "unit": "liter",
+    "createdAt": "2026-05-01T08:00:00Z"
+  },
+  {
+    "id": "inv-010",
+    "businessId": "demo-business",
+    "name": "Disposable Cups",
+    "category": "Supplies",
+    "quantity": 151,
+    "minQuantity": 50,
+    "unit": "unit",
+    "createdAt": "2026-05-01T08:00:00Z"
+  }
+]

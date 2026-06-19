@@ -1,0 +1,56 @@
+{
+  "categories": [
+    {
+      "id": "starters",
+      "name": "Starters",
+      "emoji": "🥗",
+      "items": [
+        { "id": "s1", "name": "Mediterranean Salad",  "price": 52,  "desc": "Tomatoes, cucumber, feta cheese, olives, olive oil" },
+        { "id": "s2", "name": "House Hummus",          "price": 38,  "desc": "With olive oil, paprika and parsley" },
+        { "id": "s3", "name": "Bruschetta",            "price": 44,  "desc": "Toasted bread, fresh tomato, basil, garlic" },
+        { "id": "s4", "name": "Tomato Soup",           "price": 42,  "desc": "Sun-dried tomato soup with sour cream" },
+        { "id": "s5", "name": "Cheese Board",          "price": 68,  "desc": "Artisan cheeses with honey and walnuts" }
+      ]
+    },
+    {
+      "id": "mains",
+      "name": "Main Courses",
+      "emoji": "🍽️",
+      "items": [
+        { "id": "m1", "name": "Ribeye Steak",          "price": 148, "desc": "10 oz, served with roasted vegetables and fries" },
+        { "id": "m2", "name": "Salmon Fillet",         "price": 118, "desc": "With lemon-dill sauce and steamed vegetables" },
+        { "id": "m3", "name": "Four-Cheese Pasta",     "price": 78,  "desc": "Fresh pasta with a rich four-cheese sauce" },
+        { "id": "m4", "name": "Roasted Chicken",       "price": 88,  "desc": "Chicken breast with roasted vegetables and potato" },
+        { "id": "m5", "name": "House Burger",          "price": 82,  "desc": "Fresh beef patty, yellow cheese, veggies, brioche bun" },
+        { "id": "m6", "name": "Mushroom Risotto",      "price": 84,  "desc": "Arborio rice with mushrooms and parmesan" },
+        { "id": "m7", "name": "Classic Schnitzel",     "price": 76,  "desc": "With mashed potatoes and tomato sauce" },
+        { "id": "m8", "name": "Fish of the Day",       "price": 128, "desc": "Ask your server — fresh daily catch" }
+      ]
+    },
+    {
+      "id": "desserts",
+      "name": "Desserts",
+      "emoji": "🍰",
+      "items": [
+        { "id": "d1", "name": "Chocolate Fondant",     "price": 48, "desc": "Warm chocolate cake with vanilla ice cream" },
+        { "id": "d2", "name": "Crème Brûlée",          "price": 44, "desc": "Classic with caramel sugar crust" },
+        { "id": "d3", "name": "Tiramisu",              "price": 46, "desc": "Traditional Italian recipe" },
+        { "id": "d4", "name": "Cheesecake",            "price": 48, "desc": "With mixed berry coulis" }
+      ]
+    },
+    {
+      "id": "drinks",
+      "name": "Drinks",
+      "emoji": "🍷",
+      "items": [
+        { "id": "dr1", "name": "Red Wine (glass)",     "price": 38, "desc": "Cabernet Sauvignon, Napa Valley" },
+        { "id": "dr2", "name": "White Wine (glass)",   "price": 36, "desc": "Chardonnay, Sonoma Coast" },
+        { "id": "dr3", "name": "Draft Beer",           "price": 28, "desc": "Ask for today's selection" },
+        { "id": "dr4", "name": "Espresso",             "price": 16, "desc": "" },
+        { "id": "dr5", "name": "Filter Coffee",        "price": 18, "desc": "Hot / Iced" },
+        { "id": "dr6", "name": "Fresh Orange Juice",   "price": 22, "desc": "Freshly squeezed" },
+        { "id": "dr7", "name": "Mineral Water",        "price": 12, "desc": "500 ml bottle" }
+      ]
+    }
+  ]
+}
