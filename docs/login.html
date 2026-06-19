@@ -523,7 +523,7 @@ function enterDemo() {
       data.plan           = 'enterprise_plus'; // Demo shows all features
       data.businessType   = 'restaurant';
       localStorage.setItem('reserveai_user', JSON.stringify(data));
-      window.location.replace('./');
+      window.location.replace('index.html');
     }
   });
 }
@@ -551,7 +551,7 @@ async function doLogin() {
     } else {
       localStorage.removeItem('reserveai_saved_email');
     }
-    window.location.replace('./');
+    window.location.replace('index.html');
   } catch(e) {
     showErr(err, 'שגיאת חיבור. אנא נסה שוב.');
   } finally {
@@ -579,7 +579,7 @@ async function doRegister() {
     const data = await res.json();
     if (!res.ok) { showErr(err, data.error); return; }
     localStorage.setItem('reserveai_user', JSON.stringify(data));
-    window.location.replace('./');
+    window.location.replace('index.html');
   } catch(e) {
     showErr(err, 'שגיאת חיבור. אנא נסה שוב.');
   } finally {
@@ -669,7 +669,7 @@ document.addEventListener('keydown', e => {
         const merged = { ...d.user, token: u.token, _isDemo: u._isDemo };
         if (u._isDemo) { merged.plan = 'world'; merged.businessType = 'restaurant'; }
         localStorage.setItem('reserveai_user', JSON.stringify(merged));
-        window.location.replace('./');
+        window.location.replace('index.html');
         return;
       }
       // Token invalid — clean up
@@ -684,7 +684,7 @@ document.addEventListener('keydown', e => {
       showErr(err, 'Session expired — please log in again');
     } catch(e) {
       // Network error — try redirect anyway
-      window.location.replace('./');
+      window.location.replace('index.html');
     }
   } else {
     // No active session — pre-fill remembered email if any
